@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Admin\Main\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Main'], function () {
+    Route::get('/', [IndexController::class, '__invoke']);
 });
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Admin\Main'], function () {
+        Route::get('/', [AdminController::class, '__invoke']);
+    });
+});
+
+Auth::routes();
