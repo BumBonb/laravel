@@ -15,19 +15,30 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Название</th>
-                                        <th>Действия</th>
+                                        <th>Автор</th>
+                                        <th>Жанры</th>
+                                        <th>Дата публикации</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <a href=""><ion-icon name="eye-outline" style="color: black"></ion-icon></a>
-                                                <a href=""><ion-icon name="pencil-outline" style="color: black"></ion-icon></a>
-                                                <a href=""><ion-icon name="skull-outline" style="color: red"></ion-icon></a>
-                                            </td>
-                                        </tr>
+                                @foreach($genre->books as $book)
+                                    <tr class="text-center">
+                                        <td>{{ $book->id }}</td>
+                                        <td>{{ $book->title }}</td>
+                                        <td>{{ $book->author->name }}</td>
+                                        <td>
+                                            @foreach($book->genres as $genre)
+                                                {{ $genre->title }}
+                                            @endforeach
+                                        </td>
+                                        <td>{{ $book->created_at->format('d m y') }}</td>
+                                        <td>
+                                            <a href=""><ion-icon name="eye-outline" style="color: black"></ion-icon></a>
+                                            <a href=""><ion-icon name="pencil-outline" style="color: black"></ion-icon></a>
+                                            <a href=""><ion-icon name="skull-outline" style="color: red"></ion-icon></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

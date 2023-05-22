@@ -11,15 +11,20 @@
         </div>
 
         <div class="wrapper_main">
-            <div class="genre_main">
-                <a href="/genre">Жанры</a>
-            </div>
-            <div class="author_main">
-                <a href="/author">Авторы</a>
-            </div>
-            <div class="books_main">
-                <a href="/books">Книги</a>
-            </div>
+            <table class="table table-hover text-nowrap">
+                <tbody class="text-center">
+                <tr class="border-top" onclick="window.location='/genre'" style="cursor: pointer">
+                    <td>Жанры</td>
+                </tr>
+                <tr onclick="window.location='/author'" style="cursor: pointer">
+                    <td>Авторы</td>
+                </tr>
+                <tr onclick="window.location='/book'" style="cursor: pointer">
+                    <td>Книги</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+
     </div>
 @endsection
